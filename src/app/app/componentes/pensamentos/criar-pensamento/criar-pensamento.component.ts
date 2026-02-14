@@ -10,9 +10,17 @@ export class CriarPensamentoComponent {
     id: 1,
     conteudo: 'Aprendendo angular',
     autoria: 'Dev',
-    modelo: ''
+    modelo: 'Modelo XPTO'
   }
 
   constructor() {
+  }
+
+  protected criarPensamento() {
+    alert('Pensamento criado com sucesso!');
+  }
+
+  protected cancelar() {
+    alert('Cancelado com sucesso!');
   }
 }
