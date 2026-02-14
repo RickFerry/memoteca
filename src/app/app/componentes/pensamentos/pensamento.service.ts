@@ -12,11 +12,23 @@ export class PensamentoService {
   constructor(private client: HttpClient) {
   }
 
+  buscarPorId(id: number): Observable<Pensamento> {
+    return this.client.get<Pensamento>(`${this.url}/${id}`);
+  }
+
   listar(): Observable<Pensamento[]> {
     return this.client.get<Pensamento[]>(this.url);
   }
 
   criar(pensamento: Pensamento): Observable<Pensamento> {
     return this.client.post<Pensamento>(this.url, pensamento);
+  }
+
+  excluir(id: number): Observable<void> {
+    return this.client.delete<void>(`${this.url}/${id}`);
+  }
+
+  editar(pensamento: Pensamento): Observable<Pensamento> {
+    return this.client.put<Pensamento>(`${this.url}/${pensamento.id}`, pensamento);
   }
 }

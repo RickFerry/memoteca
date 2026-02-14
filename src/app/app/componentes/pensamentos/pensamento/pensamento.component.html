@@ -3,10 +3,10 @@
   <p class="conteudo">{{ pensamento.conteudo }}</p>
   <p class="autoria"><b>{{ pensamento.autoria }}</b></p>
   <div class="acoes">
-    <button class="botao-editar">
+    <button class="botao-editar" routerLink="/pensamentos/editarPensamento/{{ pensamento.id }}">
       <img ngSrc="assets/Imagens/icone-editar.png" alt="Editar" height="32" width="32">
     </button>
-    <button class="botao-excluir">
+    <button class="botao-excluir" routerLink="/pensamentos/excluirPensamento/{{ pensamento.id }}">
       <img ngSrc="assets/Imagens/icone-excluir.png" alt="Excluir" height="32" width="32">
     </button>
   </div>
