@@ -6,10 +6,11 @@ import {AppComponent} from './app.component';
 import {CabecalhoComponent} from './app/componentes/cabecalho/cabecalho.component';
 import {NgOptimizedImage} from "@angular/common";
 import {RodapeComponent} from './app/componentes/rodape/rodape.component';
-import { CriarPensamentoComponent } from './app/componentes/pensamentos/criar-pensamento/criar-pensamento.component';
+import {CriarPensamentoComponent} from './app/componentes/pensamentos/criar-pensamento/criar-pensamento.component';
 import {FormsModule} from "@angular/forms";
-import { ListarPensamentoComponent } from './app/componentes/pensamentos/listar-pensamento/listar-pensamento.component';
-import { PensamentoComponent } from './app/componentes/pensamentos/pensamento/pensamento.component';
+import {ListarPensamentoComponent} from './app/componentes/pensamentos/listar-pensamento/listar-pensamento.component';
+import {PensamentoComponent} from './app/componentes/pensamentos/pensamento/pensamento.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -20,12 +21,13 @@ import { PensamentoComponent } from './app/componentes/pensamentos/pensamento/pe
     ListarPensamentoComponent,
     PensamentoComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        NgOptimizedImage,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgOptimizedImage,
+    FormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
