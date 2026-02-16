@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PensamentoService} from "../pensamento.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-editar-pensamento',
@@ -8,31 +9,46 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./editar-pensamento.component.css']
 })
 export class EditarPensamentoComponent implements OnInit {
-  pensamento = {
-    id: 0,
-    conteudo: '',
-    autoria: '',
-    modelo: ''
-  };
+  formulario!: FormGroup;
 
-  constructor(private service: PensamentoService, private router: Router, private route: ActivatedRoute) {
+  constructor(private service: PensamentoService, private router: Router, private route: ActivatedRoute, private builder: FormBuilder) {
   }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
+
+    this.formulario = this.builder.group({
+      id: [0],
+      conteudo: ['', Validators.compose([
+        Validators.required,
+        Validators.pattern(/^(?!\s*$).+/),
+        Validators.minLength(3),
+        Validators.maxLength(255),
+      ])],
+      autoria: ['', Validators.compose([
+        Validators.required,
+        Validators.pattern(/^(?!\s*$).+/),
+        Validators.minLength(3),
+        Validators.maxLength(255),
+      ])],
+      modelo: ['']
+    });
+
     if (id) {
       this.service.buscarPorId(+id).subscribe(pensamento => {
-        this.pensamento = pensamento;
+        this.formulario.patchValue(pensamento);
       });
     }
   }
 
   editarPensamento() {
-    this.service.editar(this.pensamento).subscribe(() => {
-      this.router.navigate(['/listarPensamento']).catch(error => {
-        console.error('Erro ao navegar para listarPensamento:', error);
+    if (this.formulario.valid) {
+      this.service.editar(this.formulario.value).subscribe(() => {
+        this.router.navigate(['/listarPensamento']).catch(error => {
+          console.error('Erro ao navegar para listarPensamento:', error);
+        });
       });
-    });
+    }
   }
 
   cancelar() {

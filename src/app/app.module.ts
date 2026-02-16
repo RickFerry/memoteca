@@ -7,7 +7,7 @@ import {CabecalhoComponent} from './app/componentes/cabecalho/cabecalho.componen
 import {NgOptimizedImage} from "@angular/common";
 import {RodapeComponent} from './app/componentes/rodape/rodape.component';
 import {CriarPensamentoComponent} from './app/componentes/pensamentos/criar-pensamento/criar-pensamento.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ListarPensamentoComponent} from './app/componentes/pensamentos/listar-pensamento/listar-pensamento.component';
 import {PensamentoComponent} from './app/componentes/pensamentos/pensamento/pensamento.component';
 import {HttpClientModule} from "@angular/common/http";
@@ -31,6 +31,7 @@ import { EditarPensamentoComponent } from './app/componentes/pensamentos/editar-
     NgOptimizedImage,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
