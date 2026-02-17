@@ -17,26 +17,25 @@ export class EditarPensamentoComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
 
-    this.formulario = this.builder.group({
-      id: [0],
-      conteudo: ['', Validators.compose([
-        Validators.required,
-        Validators.pattern(/^(?!\s*$).+/),
-        Validators.minLength(3),
-        Validators.maxLength(255),
-      ])],
-      autoria: ['', Validators.compose([
-        Validators.required,
-        Validators.pattern(/^(?!\s*$).+/),
-        Validators.minLength(3),
-        Validators.maxLength(255),
-      ])],
-      modelo: ['']
-    });
-
     if (id) {
       this.service.buscarPorId(+id).subscribe(pensamento => {
-        this.formulario.patchValue(pensamento);
+        this.formulario = this.builder.group({
+          id: [pensamento.id],
+          conteudo: [pensamento.conteudo, Validators.compose([
+            Validators.required,
+            Validators.pattern(/^(?!\s*$).+/),
+            Validators.minLength(3),
+            Validators.maxLength(255),
+          ])],
+          autoria: [pensamento.autoria, Validators.compose([
+            Validators.required,
+            Validators.pattern(/^(?!\s*$).+/),
+            Validators.minLength(3),
+            Validators.maxLength(255),
+          ])],
+          modelo: [pensamento.modelo],
+          favorito: [pensamento.favorito]
+        });
       });
     }
   }

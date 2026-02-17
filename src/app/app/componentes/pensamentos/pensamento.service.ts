@@ -39,4 +39,11 @@ export class PensamentoService {
   editar(pensamento: Pensamento): Observable<Pensamento> {
     return this.client.put<Pensamento>(`${this.url}/${pensamento.id}`, pensamento);
   }
+
+  mudarFavorito(pensamento: Pensamento): Observable<Pensamento> {
+    return this.editar({
+      ...pensamento,
+      favorito: !pensamento.favorito
+    });
+  }
 }

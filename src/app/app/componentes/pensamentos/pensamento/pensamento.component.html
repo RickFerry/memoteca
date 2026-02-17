@@ -3,6 +3,12 @@
   <p class="conteudo">{{ pensamento.conteudo }}</p>
   <p class="autoria"><b>{{ pensamento.autoria }}</b></p>
   <div class="acoes">
+    <button class="botao-favorito" (click)="mudarFavorito()">
+      <img *ngIf="pensamento.favorito" ngSrc="assets/Imagens/icone-favorito-ativo.png" alt="Icone ativo"
+           height="32" width="32">
+      <img *ngIf="!pensamento.favorito" ngSrc="assets/Imagens/icone-favorito-inativo.png" alt="Icone inativo"
+           height="32" width="32">
+    </button>
     <button class="botao-editar" routerLink="/pensamentos/editarPensamento/{{ pensamento.id }}">
       <img ngSrc="assets/Imagens/icone-editar.png" alt="Editar" height="32" width="32">
     </button>

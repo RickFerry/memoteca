@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Pensamento} from "../model/pensamento";
+import {PensamentoService} from "../pensamento.service";
 
 @Component({
   selector: 'app-pensamento',
@@ -11,10 +12,11 @@ export class PensamentoComponent implements OnInit {
     id: 1,
     conteudo: 'Aprendendo angular',
     autoria: 'Dev',
-    modelo: 'modelo3'
+    modelo: 'modelo3',
+    favorito: false
   }
 
-  constructor() {
+  constructor(private service: PensamentoService) {
   }
 
   ngOnInit(): void {
@@ -25,5 +27,16 @@ export class PensamentoComponent implements OnInit {
       return 'pensamento-g';
     }
     return 'pensamento-p';
+  }
+
+  protected mudarFavorito() {
+    this.service.mudarFavorito(this.pensamento).subscribe({
+      next: (pensamentoAtualizado) => {
+        this.pensamento = pensamentoAtualizado;
+      },
+      error: (erro) => {
+        console.error('Erro ao mudar favorito:', erro);
+      }
+    });
   }
 }
