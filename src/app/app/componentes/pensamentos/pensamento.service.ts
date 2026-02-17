@@ -16,12 +16,14 @@ export class PensamentoService {
     return this.client.get<Pensamento>(`${this.url}/${id}`);
   }
 
-  listar(pagina: number): Observable<Pensamento[]> {
-    const params = new HttpParams()
+  listar(pagina: number, filtro: string): Observable<Pensamento[]> {
+    let params = new HttpParams()
       .set('_page', pagina.toString())
-      .set('_limit', '1')
-      .set('_sort', 'id')
-      .set('_order', 'desc');
+      .set('_limit', '6');
+
+    if (filtro) {
+      params = params.set('q', filtro);
+    }
 
     return this.client.get<Pensamento[]>(this.url, {params});
   }
