@@ -9,6 +9,14 @@
     </div>
   </div>
 </section>
+<app-botao-carregar-mais
+  tabindex="0"
+  onKeyDown=""
+  [haMaisPensamentos]="haMaisPensamentos"
+  (carregarMais)="carregarMaisPensamentos()"
+  (keydown.enter)="carregarMaisPensamentos()"
+  (keydown.space)="$event.preventDefault(); carregarMaisPensamentos()">
+</app-botao-carregar-mais>
 <ng-template #semPensamentos>
   <div class="ff-inter sem-pensamentos">
     <p>Não há pensamentos para exibir. :-(</p>

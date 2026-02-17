@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Pensamento} from "./model/pensamento";
 import {Observable} from "rxjs";
 
@@ -16,8 +16,14 @@ export class PensamentoService {
     return this.client.get<Pensamento>(`${this.url}/${id}`);
   }
 
-  listar(): Observable<Pensamento[]> {
-    return this.client.get<Pensamento[]>(this.url);
+  listar(pagina: number): Observable<Pensamento[]> {
+    const params = new HttpParams()
+      .set('_page', pagina.toString())
+      .set('_limit', '1')
+      .set('_sort', 'id')
+      .set('_order', 'desc');
+
+    return this.client.get<Pensamento[]>(this.url, {params});
   }
 
   criar(pensamento: Pensamento): Observable<Pensamento> {

@@ -13,6 +13,7 @@ import {PensamentoComponent} from './app/componentes/pensamentos/pensamento/pens
 import {HttpClientModule} from "@angular/common/http";
 import { ExcluirPensamentoComponent } from './app/componentes/pensamentos/excluir-pensamento/excluir-pensamento.component';
 import { EditarPensamentoComponent } from './app/componentes/pensamentos/editar-pensamento/editar-pensamento.component';
+import { BotaoCarregarMaisComponent } from './app/componentes/pensamentos/listar-pensamento/botao-carregar-mais/botao-carregar-mais.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { EditarPensamentoComponent } from './app/componentes/pensamentos/editar-
     ListarPensamentoComponent,
     PensamentoComponent,
     ExcluirPensamentoComponent,
-    EditarPensamentoComponent
+    EditarPensamentoComponent,
+    BotaoCarregarMaisComponent
   ],
   imports: [
     BrowserModule,
