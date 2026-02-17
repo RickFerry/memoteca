@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Pensamento} from "../model/pensamento";
 import {PensamentoService} from "../pensamento.service";
 
@@ -7,7 +7,7 @@ import {PensamentoService} from "../pensamento.service";
   templateUrl: './pensamento.component.html',
   styleUrls: ['./pensamento.component.css']
 })
-export class PensamentoComponent implements OnInit {
+export class PensamentoComponent {
   @Input() pensamento: Pensamento = {
     id: 1,
     conteudo: 'Aprendendo angular',
@@ -16,10 +16,7 @@ export class PensamentoComponent implements OnInit {
     favorito: false
   }
 
-  constructor(private service: PensamentoService) {
-  }
-
-  ngOnInit(): void {
+  constructor(private readonly service: PensamentoService) {
   }
 
   larguraPensamento(): string {

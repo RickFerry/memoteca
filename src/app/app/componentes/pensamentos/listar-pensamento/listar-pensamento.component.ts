@@ -13,7 +13,7 @@ export class ListarPensamentoComponent implements OnInit {
   protected haMaisPensamentos: boolean = true;
   protected filtro: string = '';
 
-  constructor(private service: PensamentoService) {
+  constructor(private readonly service: PensamentoService) {
   }
 
   ngOnInit(): void {

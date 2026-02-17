@@ -11,7 +11,11 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class EditarPensamentoComponent implements OnInit {
   formulario!: FormGroup;
 
-  constructor(private service: PensamentoService, private router: Router, private route: ActivatedRoute, private builder: FormBuilder) {
+  constructor(
+    private readonly service: PensamentoService,
+    private readonly router: Router,
+    private readonly route: ActivatedRoute,
+    private readonly builder: FormBuilder) {
   }
 
   ngOnInit(): void {

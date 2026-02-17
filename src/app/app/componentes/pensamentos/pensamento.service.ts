@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
 export class PensamentoService {
   private readonly url = 'http://localhost:3000/pensamentos';
 
-  constructor(private client: HttpClient) {
+  constructor(private readonly client: HttpClient) {
   }
 
   buscarPorId(id: number): Observable<Pensamento> {
